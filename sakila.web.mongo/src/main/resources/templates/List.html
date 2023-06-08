@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des produits</title>
+</head>
+<body>
+<h1>Liste des produits</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="produit : ${produits}">
+        <td th:text="${produit.id}"></td>
+        <td th:text="${produit.name}"></td>
+        <td th:text="${produit.prix}"></td>
+        <td>
+            <form action="/sakilamdb/panier/create" method="post">
+                <input type="hidden" name="produitId" th:value="${produit.id}" />
+                <input type="hidden" name="produitNom" th:value="${produit.name}" />
+                <input type="hidden" name="produitPrix" th:value="${produit.prix}" />
+                <button type="submit">Acheter</button>
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>
